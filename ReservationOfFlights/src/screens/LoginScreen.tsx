@@ -17,16 +17,16 @@ export const LoginScreen = () => {
         </View>
 
         <View style={{width: '100%', paddingBottom: 20}}>
-            <Input text='Email'/>
-            <Input text='Password' pass={true} />
+            <Input text='Email' color='#fff' />
+            <Input text='Password' pass={true} color='#fff' />
         </View>
 
         <TouchableOpacity style={styles.buttons}>
             <Text style={styles.textButton}>Log in</Text>
         </TouchableOpacity>
         <View style={{flexDirection: 'row', gap: 6, paddingTop: 10}}>
-            <Text>
-                Don't have an account?
+            <Text style={{color: '#fff'}}>
+                Don't have an account? 
             </Text>
             <TouchableOpacity>
                 <Text style={{textDecorationLine: 'underline', color: '#707cf1'}}>Register</Text>
@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: 20,
+        paddingHorizontal: 20,
+        backgroundColor: 'rgba(25,9,33,0.7)',
     },
     buttons:{
         backgroundColor: '#5f6def',
