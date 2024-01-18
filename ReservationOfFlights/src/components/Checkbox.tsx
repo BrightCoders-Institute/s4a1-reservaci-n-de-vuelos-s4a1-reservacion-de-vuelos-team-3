@@ -1,23 +1,37 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
-export const Checkbox = ({textProp="text", obligatory=false}) => {
+export const Checkbox = ({textProp = 'text', obligatory = false}) => {
   return (
-    <View style={{flexDirection: 'row'}}>
-        <BouncyCheckbox
-            size={25}
-            fillColor="#5f6def"
-            unfillColor="#fff"
-            text={textProp}
-            textStyle={{textDecorationLine: 'none'}}
-            iconStyle={{ borderRadius: 0 }}
-            innerIconStyle={{ borderRadius: 0}}
-            onPress={(isChecked: boolean) => {}}
-        />
-        
-        <Text style={{color: 'red'}}>{obligatory? '*' : ''}</Text>
+    <View style={styles.termsContainer}>
+      <BouncyCheckbox
+        size={25}
+        fillColor="#5f6def"
+        unfillColor="#fff"
+        text={textProp}
+        textStyle={styles.checkBoxText}
+        iconStyle={styles.checkBoxRadius}
+        innerIconStyle={styles.checkBoxRadius}
+        onPress={(isChecked: boolean) => {}}
+      />
+
+      <Text style={styles.text}>{obligatory ? '*' : ''}</Text>
     </View>
-    
-  )
-}
+  );
+};
+
+const styles = StyleSheet.create({
+  termsContainer: {
+    flexDirection: 'row',
+  },
+  checkBoxRadius: {
+    borderRadius: 0,
+  },
+  checkBoxText: {
+    textDecorationLine: 'none',
+  },
+  text: {
+    color: 'red',
+  },
+});
