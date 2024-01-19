@@ -1,11 +1,14 @@
 import React from 'react';
+import {StackScreenProps} from '@react-navigation/stack';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {Input} from '../components/Input';
 import {Checkbox} from '../components/Checkbox';
 import {ButtonPrimary} from '../components/ButtonPrimary';
 import {ScreenLoader} from '../components/ScreenLoader';
 
-export const RegisterScreen = () => {
+interface Props extends StackScreenProps<any, any> {}
+
+export const RegisterScreen = ({}: Props) => {
   return (
     <View style={styles.containerPrincipal}>
       <View style={styles.container}>

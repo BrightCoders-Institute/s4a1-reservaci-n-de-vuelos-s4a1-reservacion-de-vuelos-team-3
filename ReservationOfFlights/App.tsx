@@ -1,14 +1,10 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { LoginScreen } from './src/screens/LoginScreen';
-import { RegisterScreen } from './src/screens/RegisterScreen';
 
+import {Routes} from './src/navigator/Routes';
 
 function App(): React.JSX.Element {
-
-
-  return (
-   <RegisterScreen/>
-  );
+  return <Routes />;
 }
 
 export default App;

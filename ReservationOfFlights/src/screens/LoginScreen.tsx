@@ -8,8 +8,14 @@ import {
 } from 'react-native';
 import {Input} from '../components/Input';
 import {ButtonPrimary} from '../components/ButtonPrimary';
+import {useNavigation} from '@react-navigation/native';
 
 export const LoginScreen = () => {
+  const {navigate} = useNavigation();
+  const handleRegisterPress = () => {
+    navigate('Register' as never);
+  };
+
   const imageUrl =
     'https://i.pinimg.com/550x/ba/ae/11/baae11ae1753b2833af58283eeb61508.jpg';
 
@@ -27,7 +33,7 @@ export const LoginScreen = () => {
 
         <View style={styles.notAccount}>
           <Text style={styles.simpleText}>Don't have an account?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleRegisterPress}>
             <Text style={styles.buttonText}>Register</Text>
           </TouchableOpacity>
         </View>
