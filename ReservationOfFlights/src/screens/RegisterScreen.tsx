@@ -18,6 +18,9 @@ export const RegisterScreen = ({}: Props) => {
           <Input text="First Name" withBackground />
           <Input text="Email" withBackground />
           <Input text="Password" pass={true} withBackground />
+          <Text>
+            Use 8 or more characters with a mix of letter, numbers, and symbols.
+          </Text>
         </View>
 
         <View style={styles.checksContainer}>
@@ -64,6 +67,8 @@ const styles = StyleSheet.create({
   inputsContainer: {
     width: '100%',
     paddingBottom: 20,
+    flexDirection: 'column',
+    gap: 10,
   },
   checksContainer: {
     width: '100%',
