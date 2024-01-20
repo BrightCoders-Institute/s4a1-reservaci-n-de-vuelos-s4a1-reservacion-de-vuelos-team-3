@@ -4,7 +4,7 @@ import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {Input} from '../components/Input';
 import {Checkbox} from '../components/Checkbox';
 import {ButtonPrimary} from '../components/ButtonPrimary';
-import {ScreenLoader} from '../components/ScreenLoader';
+// import {ScreenLoader} from '../components/ScreenLoader';
 
 interface Props extends StackScreenProps<any, any> {}
 
@@ -48,7 +48,7 @@ export const RegisterScreen = ({}: Props) => {
         </View>
       </View>
 
-      <ScreenLoader />
+      {/* <ScreenLoader /> */}
     </View>
   );
 };
