@@ -11,7 +11,7 @@ export const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Register"
+        initialRouteName="Log_In"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Log_In" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />

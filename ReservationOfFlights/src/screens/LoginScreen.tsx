@@ -25,8 +25,8 @@ export const LoginScreen = () => {
         <Text style={styles.title}>Login</Text>
 
         <View style={styles.inputsContainer}>
-          <Input text="Email" color="#fff" />
-          <Input text="Password" pass={true} color="#fff" />
+          <Input textProp="Email" color="#fff" />
+          <Input textProp="Password" pass={true} color="#fff" />
         </View>
 
         <ButtonPrimary text="Log In" />
