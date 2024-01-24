@@ -1,13 +1,32 @@
 import React from 'react';
-import {Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  GestureResponderEvent,
+} from 'react-native';
 
-export const ButtonPrimary = ({text = 'NaN', icon = ''}) => {
+type Props = {
+  text: string;
+  icon?: string;
+  disabled?: boolean;
+  onPress?: (event: GestureResponderEvent) => void;
+};
+
+export const ButtonPrimary = (props: Props) => {
   return (
-    <TouchableOpacity style={styles.container}>
-      {icon !== '' ? (
+    <TouchableOpacity
+      onPress={props.onPress}
+      style={[
+        styles.container,
+        props.disabled ? styles.disabled : styles.enable,
+      ]}
+      disabled={props.disabled}>
+      {props.icon !== undefined ? (
         <Image
           source={{
-            uri: icon,
+            uri: props.icon,
           }}
           style={styles.icon}
         />
@@ -15,7 +34,7 @@ export const ButtonPrimary = ({text = 'NaN', icon = ''}) => {
         ''
       )}
 
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}>{props.text}</Text>
     </TouchableOpacity>
   );
 };
@@ -24,10 +43,15 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: '#5f6def',
     padding: 10,
     borderRadius: 10,
     width: '100%',
+  },
+  enable: {
+    backgroundColor: '#5f6def',
+  },
+  disabled: {
+    backgroundColor: '#A0A0A0',
   },
   icon: {
     width: 30,
