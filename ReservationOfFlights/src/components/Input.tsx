@@ -2,13 +2,19 @@ import React, {useState} from 'react';
 import {Text, TextInput, View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export const Input = ({
-  text = 'Title',
-  pass = false,
-  color = '#000',
-  withBackground = false,
-}) => {
-  const [seepassword, setseepassword] = useState(false);
+type Props = {
+  textProp: string;
+  alertProp?: string;
+  pass?: boolean;
+  color?: string;
+  withBackground?: boolean;
+  passwordsecuryty?: boolean;
+  value?: string;
+  onChangeText?: (text: string) => void;
+};
+
+export const Input = (props: Props) => {
+  const [seepassword, setseepassword] = useState(props.passwordsecuryty);
 
   const handleSeePassword = () => {
     setseepassword(!seepassword);
@@ -16,16 +22,25 @@ export const Input = ({
 
   return (
     <View style={styles.container}>
-      <Text style={{color}}>{text}*</Text>
+      <View style={styles.containerTexts}>
+        <Text style={{color: 'black'}}>{props.textProp} *</Text>
+        <Text style={{color: 'red'}}> {props.alertProp}</Text>
+      </View>
       <TextInput
+        value={props.value}
         secureTextEntry={seepassword}
-        style={
-          withBackground
+        onChangeText={props.onChangeText}
+        style={[
+          props.withBackground
             ? styles.inputBackGround
-            : styles.inputWithOutBackGround
-        }
+            : styles.inputWithOutBackGround,
+
+          typeof props.value !== 'undefined' && props.value.length > 0
+            ? styles.borderactive
+            : null,
+        ]}
       />
-      {pass && (
+      {props.pass && (
         <Icon
           style={styles.icon}
           onPress={handleSeePassword}
@@ -40,6 +55,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     gap: 8,
+  },
+  containerTexts: {
+    flexDirection: 'row',
   },
   inputBackGround: {
     width: '100%',
@@ -67,5 +85,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 9,
     right: 5,
+  },
+  borderactive: {
+    borderWidth: 1,
+    borderColor: '#5f6def',
   },
 });
