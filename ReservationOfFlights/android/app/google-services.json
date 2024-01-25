@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "960413805356",
+    "project_id": "reservationflights-8fe0b",
+    "storage_bucket": "reservationflights-8fe0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960413805356:android:9e34023954ce0580741a89",
+        "android_client_info": {
+          "package_name": "com.reservationofflights"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnHk6Yd77KU0okHNCThH0u8JIHteQgJ7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
