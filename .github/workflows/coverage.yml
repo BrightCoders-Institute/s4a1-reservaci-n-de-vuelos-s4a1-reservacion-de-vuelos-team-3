@@ -13,4 +13,6 @@ jobs:
               working-directory: ReservationOfFlights
               run: npm i
             - uses: ArtiomTr/jest-coverage-report-action@v2
+              with:
+                working-directory: ReservationOfFlights
             
