@@ -57,14 +57,12 @@ export const RegisterScreen = ({}: Props) => {
 
         <View style={styles.inputsContainer}>
           <Input
-            value="O"
             textProp="First Name"
             passwordsecuryty={false}
             withBackground
             onChangeText={text => setNombre(text)}
           />
           <Input
-            value="oscar@gmail.com"
             textProp="Email"
             passwordsecuryty={false}
             withBackground
@@ -72,7 +70,6 @@ export const RegisterScreen = ({}: Props) => {
             alertProp={inputAlert}
           />
           <Input
-            value="19092001"
             textProp="Password"
             pass={true}
             passwordsecuryty={true}
