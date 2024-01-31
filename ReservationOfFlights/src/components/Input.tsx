@@ -10,6 +10,7 @@ type Props = {
   withBackground?: boolean;
   passwordsecuryty?: boolean;
   value?: string;
+  eyecolor?: boolean;
   onChangeText?: (text: string) => void;
 };
 
@@ -23,7 +24,7 @@ export const Input = (props: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.containerTexts}>
-        <Text style={{color: 'black'}}>{props.textProp} *</Text>
+        <Text style={{color: props.color}}>{props.textProp} *</Text>
         <Text style={{color: 'red'}}> {props.alertProp}</Text>
       </View>
       <TextInput
@@ -42,7 +43,7 @@ export const Input = (props: Props) => {
       />
       {props.pass && (
         <Icon
-          style={styles.icon}
+          style={[props.eyecolor ? styles.icon : styles.iconlogin]}
           onPress={handleSeePassword}
           name={seepassword ? 'eye-off-outline' : 'eye-outline'}
         />
@@ -81,6 +82,13 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: '#000',
+    fontSize: 28,
+    position: 'absolute',
+    bottom: 9,
+    right: 5,
+  },
+  iconlogin: {
+    color: '#fff',
     fontSize: 28,
     position: 'absolute',
     bottom: 9,

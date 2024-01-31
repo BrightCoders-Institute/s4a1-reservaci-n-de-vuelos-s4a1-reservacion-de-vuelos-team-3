@@ -37,11 +37,9 @@ export const HomeScreen = () => {
       <Text style={styles.title}>My Flights</Text>
       <FlatList data={data} renderItem={Card} style={styles.flatList} />
       <ButtonMoreFlights />
-      <ButtonLogOut />
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     padding: 15,
