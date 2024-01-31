@@ -12,11 +12,17 @@ export const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Log_In"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Log_In" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Log_In">
+          {props => <LoginScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Register">
+          {props => <RegisterScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Home">
+          {props => <HomeScreen {...props} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

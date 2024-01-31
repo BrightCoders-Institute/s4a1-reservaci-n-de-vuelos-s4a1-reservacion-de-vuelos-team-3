@@ -17,10 +17,11 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 100,
     position: 'absolute',
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
     right: 15,
     bottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
 });
