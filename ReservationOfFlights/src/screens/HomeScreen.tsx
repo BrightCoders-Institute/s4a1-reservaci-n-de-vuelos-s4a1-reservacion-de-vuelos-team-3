@@ -40,6 +40,7 @@ export const HomeScreen = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     padding: 15,
