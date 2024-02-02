@@ -27,6 +27,7 @@ export const RegisterScreen = ({navigation}: any) => {
   const [enableButtonRegister, setEnableButtonRegister] = useState(false);
 
   useEffect(() => {
+
     //auth().signOut();
 
     GoogleSignin.configure({
