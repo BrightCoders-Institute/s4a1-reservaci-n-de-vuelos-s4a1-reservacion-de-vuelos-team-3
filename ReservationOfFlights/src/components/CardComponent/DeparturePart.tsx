@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-export const DeparturePart = () => {
+export const DeparturePart = ({show = true, text = 'Serbian'}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>BEG</Text>
-      <Text style={styles.text}>Serbia</Text>
+      <Text style={styles.title}>{show ? 'BEG' : ''}</Text>
+      <Text style={styles.text}>{text}</Text>
     </View>
   );
 };

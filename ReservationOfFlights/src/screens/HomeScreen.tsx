@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, View, FlatList, StyleSheet} from 'react-native';
 import {Card} from '../components/CardComponent/Card';
 import {ButtonMoreFlights} from '../components/ButtonMoreFlights';
-import {ButtonLogOut} from '../components/ButtonLogOut';
 
 const data = [
   {
@@ -31,16 +30,19 @@ const data = [
   },
 ];
 
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}: any) => {
+  function navegar() {
+    navigation.navigate('FR1');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>My Flights</Text>
-      <FlatList data={data} renderItem={Card} style={styles.flatList} />
-      <ButtonMoreFlights />
+      <FlatList data={data} renderItem={Card as any} style={styles.flatList} />
+      <ButtonMoreFlights onPress={navegar} />
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     padding: 15,
