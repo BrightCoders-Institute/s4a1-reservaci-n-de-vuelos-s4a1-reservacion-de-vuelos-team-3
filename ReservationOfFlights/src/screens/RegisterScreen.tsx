@@ -27,6 +27,8 @@ export const RegisterScreen = ({navigation}: any) => {
   const [enableButtonRegister, setEnableButtonRegister] = useState(false);
 
   useEffect(() => {
+    //auth().signOut();
+
     GoogleSignin.configure({
       webClientId:
         '960413805356-bpssvgm9s60brs9sb3huh9emrh94m5n2.apps.googleusercontent.com',
@@ -41,7 +43,7 @@ export const RegisterScreen = ({navigation}: any) => {
       const {idToken, user} = await GoogleSignin.signIn();
 
       console.log(user);
-      //navigation.replace('Home' as never);
+      navigation.replace('Home' as never);
 
       // Create a Google credential with the token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
