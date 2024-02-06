@@ -3,24 +3,30 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Card} from '../../components/CardComponent/Card';
 import {ButtonPrimary} from '../../components/ButtonPrimary';
 
-export const FligtsR_05_Final = ({navigation}: any) => {
+export const FligtsR_05_Final = ({route, navigation}: any) => {
+  const {from, to, date, passengers} = route.params;
+
+  function navegar() {
+    navigation.navigate('Home');
+  }
+
   return (
     <View style={styles.content}>
       <View style={styles.contentsecond}>
         {/* card */}
         <View>
           <Card
-            BEG={{show: true, text: 'de aqui'}}
-            AMS={{show: true, text: 'aca'}}
-            date="33232"
-            passengers="3e"
+            BEG={{show: true, text: from}}
+            AMS={{show: true, text: to}}
+            date={date}
+            passengers={passengers}
           />
           <Text style={styles.title}>Your request was received.</Text>
         </View>
 
         {/* button */}
         <View style={styles.PadH}>
-          <ButtonPrimary text="Finish" />
+          <ButtonPrimary text="Finish" onPress={navegar} />
         </View>
       </View>
     </View>

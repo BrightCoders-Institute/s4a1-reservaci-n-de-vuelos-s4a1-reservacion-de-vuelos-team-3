@@ -5,24 +5,29 @@ import {ButtonPrimary} from '../../components/ButtonPrimary';
 import {Calendar} from 'react-native-calendars';
 import {Card} from '../../components/CardComponent/Card';
 
-export default function FligtsR_03_Calendar({navigation}: any) {
+export default function FligtsR_03_Calendar({route, navigation}: any) {
+  const [date, setDate] = useState('');
+  const {from, to} = route.params;
+
   function navegar() {
-    navigation.navigate('FR4');
+    navigation.navigate('FR4', {
+      from: from,
+      to: to,
+      date: date,
+    });
   }
 
   function irAtras() {
     navigation.goBack();
   }
 
-  const [selected, setSelected] = useState('');
-
   return (
     <View style={styles.container}>
       <ButtonBack onPress={irAtras} />
       <View style={styles.elementsContainer}>
         <Card
-          AMS={{show: true, text: 'aqui'}}
-          BEG={{show: true, text: 'aca'}}
+          AMS={{show: true, text: from}}
+          BEG={{show: true, text: to}}
           date=""
           passengers=""
         />
@@ -31,10 +36,10 @@ export default function FligtsR_03_Calendar({navigation}: any) {
 
         <Calendar
           onDayPress={day => {
-            setSelected(day.dateString);
+            setDate(day.dateString);
           }}
           markedDates={{
-            [selected]: {
+            [date]: {
               selected: true,
               disableTouchEvent: true,
               selectedColor: '#5f6def',
@@ -43,7 +48,11 @@ export default function FligtsR_03_Calendar({navigation}: any) {
         />
 
         <View style={styles.buttonContainer}>
-          <ButtonPrimary text="Next" onPress={navegar} />
+          <ButtonPrimary
+            text="Next"
+            onPress={navegar}
+            disabled={date.length < 1}
+          />
         </View>
       </View>
     </View>
