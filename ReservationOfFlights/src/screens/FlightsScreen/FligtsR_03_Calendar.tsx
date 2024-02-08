@@ -4,16 +4,23 @@ import ButtonBack from '../../components/ButtonBack';
 import {ButtonPrimary} from '../../components/ButtonPrimary';
 import {Calendar} from 'react-native-calendars';
 import {Card} from '../../components/CardComponent/Card';
+import {format} from "date-fns";
+
+const getFormattedDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return format(date, 'MMMM dd, yyyy');
+  };
 
 export default function FligtsR_03_Calendar({route, navigation}: any) {
   const [date, setDate] = useState('');
+  const [formatDate, setFormatDate] = useState('');
   const {from, to} = route.params;
 
   function navegar() {
     navigation.navigate('FR4', {
       from: from,
       to: to,
-      date: date,
+      date: formatDate,
     });
   }
 
@@ -29,14 +36,15 @@ export default function FligtsR_03_Calendar({route, navigation}: any) {
           AMS={{show: true, text: from}}
           BEG={{show: true, text: to}}
           date=""
-          passengers=""
+          passengers={0}
         />
 
         <Text style={styles.title}>Select date</Text>
 
         <Calendar
           onDayPress={day => {
-            setDate(day.dateString);
+            setFormatDate(getFormattedDate(day.dateString));
+            setDate(day.dateString)
           }}
           markedDates={{
             [date]: {

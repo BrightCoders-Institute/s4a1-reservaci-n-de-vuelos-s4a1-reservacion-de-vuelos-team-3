@@ -15,7 +15,7 @@ type Props = {
     text: string;
   };
   date?: string;
-  passengers?: string;
+  passengers?: number;
 };
 
 export const Card = (props: Props) => {
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     borderRadius: 10,
     padding: 20,
+    marginTop: 20,
   },
   flightPointsDetailsContainer: {
     flexDirection: 'row',

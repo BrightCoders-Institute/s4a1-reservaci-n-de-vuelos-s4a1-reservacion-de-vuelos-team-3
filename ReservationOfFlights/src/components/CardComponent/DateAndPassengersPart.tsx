@@ -3,12 +3,12 @@ import {View, Text, StyleSheet} from 'react-native';
 
 export const DateAndPassengersPart = ({
   date = 'September 3, 2023',
-  passengers = '2 passengers',
+  passengers = 0,
 }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{date}</Text>
-      <Text style={styles.text}>{passengers}</Text>
+      <Text style={styles.text}>{passengers != 0 ? passengers + ' passengers' : ''}</Text>
     </View>
   );
 };

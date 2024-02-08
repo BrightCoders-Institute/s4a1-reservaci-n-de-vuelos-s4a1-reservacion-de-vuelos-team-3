@@ -26,10 +26,10 @@ export default function FlightsR_04_Passengers({route, navigation}: any) {
     <View style={styles.content}>
       <ButtonBack onPress={irAtras} />
       <Card
-        BEG={{show: true, text: from}}
-        AMS={{show: true, text: to}}
+        BEG={{show: true, text: to}}
+        AMS={{show: true, text: from}}
         date={date}
-        passengers=""
+        passengers={0}
       />
 
       <View>
