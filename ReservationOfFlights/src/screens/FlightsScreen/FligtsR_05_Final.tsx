@@ -2,9 +2,20 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Card} from '../../components/CardComponent/Card';
 import {ButtonPrimary} from '../../components/ButtonPrimary';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 export const FligtsR_05_Final = ({route, navigation}: any) => {
   const {from, to, date, passengers} = route.params;
+
+  firestore()
+  .collection('Users')
+  .doc(auth().currentUser?.uid)
+  .collection('Vuelos')
+  .add(route.params)
+  .then(() => {
+    console.log('Vuelo agregado correctamente');
+  })
 
   function navegar() {
     navigation.navigate('Home');
@@ -16,8 +27,8 @@ export const FligtsR_05_Final = ({route, navigation}: any) => {
         {/* card */}
         <View>
           <Card
-            BEG={{show: true, text: from}}
-            AMS={{show: true, text: to}}
+            BEG={{show: true, text: to}}
+            AMS={{show: true, text: from}}
             date={date}
             passengers={passengers}
           />
