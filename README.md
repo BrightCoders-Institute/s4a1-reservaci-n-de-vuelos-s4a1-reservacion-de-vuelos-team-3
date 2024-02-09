@@ -62,12 +62,13 @@ Once entry of the app you can be reservation flights and see the flights yet res
 - [@AxeLoza21](https://github.com/AxeLoza21)
 - [@EnriqueComparan](https://github.com/ToshioRonin)
 - [@CalixtoSD117](https://github.com/CalixtoSD117)
+- [@joseocxmpo](https://github.com/joseocxmpo)
 
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/800x300?text=App+Screenshot+Here)
+![App](https://github.com/BrightCoders-Institute/s4a1-reservaci-n-de-vuelos-s4a1-reservacion-de-vuelos-team-3/raw/main/img/App.png)
 
 ## Badges
 
