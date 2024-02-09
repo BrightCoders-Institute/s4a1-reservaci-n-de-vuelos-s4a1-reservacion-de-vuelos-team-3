@@ -4,37 +4,50 @@ import ButtonBack from '../../components/ButtonBack';
 import {ButtonPrimary} from '../../components/ButtonPrimary';
 import {Calendar} from 'react-native-calendars';
 import {Card} from '../../components/CardComponent/Card';
+import {format} from "date-fns";
 
-export default function FligtsR_03_Calendar({navigation}: any) {
+const getFormattedDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return format(date, 'MMMM dd, yyyy');
+  };
+
+export default function FligtsR_03_Calendar({route, navigation}: any) {
+  const [date, setDate] = useState('');
+  const [formatDate, setFormatDate] = useState('');
+  const {from, to} = route.params;
+
   function navegar() {
-    navigation.navigate('FR4');
+    navigation.navigate('FR4', {
+      from: from,
+      to: to,
+      date: formatDate,
+    });
   }
 
   function irAtras() {
     navigation.goBack();
   }
 
-  const [selected, setSelected] = useState('');
-
   return (
     <View style={styles.container}>
       <ButtonBack onPress={irAtras} />
       <View style={styles.elementsContainer}>
         <Card
-          AMS={{show: true, text: 'aqui'}}
-          BEG={{show: true, text: 'aca'}}
+          AMS={{show: true, text: from}}
+          BEG={{show: true, text: to}}
           date=""
-          passengers=""
+          passengers={0}
         />
 
         <Text style={styles.title}>Select date</Text>
 
         <Calendar
           onDayPress={day => {
-            setSelected(day.dateString);
+            setFormatDate(getFormattedDate(day.dateString));
+            setDate(day.dateString)
           }}
           markedDates={{
-            [selected]: {
+            [date]: {
               selected: true,
               disableTouchEvent: true,
               selectedColor: '#5f6def',
@@ -43,7 +56,11 @@ export default function FligtsR_03_Calendar({navigation}: any) {
         />
 
         <View style={styles.buttonContainer}>
-          <ButtonPrimary text="Next" onPress={navegar} />
+          <ButtonPrimary
+            text="Next"
+            onPress={navegar}
+            disabled={date.length < 1}
+          />
         </View>
       </View>
     </View>

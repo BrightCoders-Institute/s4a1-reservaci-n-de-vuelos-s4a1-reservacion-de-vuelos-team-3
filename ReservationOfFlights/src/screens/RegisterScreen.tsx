@@ -9,6 +9,7 @@ import {ButtonPrimary} from '../components/ButtonPrimary';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {ScreenLoader} from '../components/ScreenLoader';
+import firestore from '@react-native-firebase/firestore';
 //import {useNavigation} from '@react-navigation/native';
 
 //interface Props extends StackScreenProps<any, any> {}
@@ -50,7 +51,26 @@ export const RegisterScreen = ({navigation}: any) => {
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
       // Sign-in the user with the credential
-      return auth().signInWithCredential(googleCredential);
+      auth()
+        .signInWithCredential(googleCredential)
+        .then(() => {
+          firestore()
+            .collection('Users')
+            .doc(auth().currentUser?.uid)
+            .set({
+              name: user.givenName,
+            })
+            .then(() => {
+              console.log('User successfully registered');
+              setIsRegister(true);
+              setTimeout(() => {
+                navigation.replace('Home' as never);
+                //navigate('Log_In' as never);
+                setIsLoading(false);
+                //resetData();
+              }, 1500);
+            });
+        });
     } catch (error) {
       console.log('fallo en el registro de ususario' + error);
     }
@@ -60,8 +80,19 @@ export const RegisterScreen = ({navigation}: any) => {
     setIsLoading(true);
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('Usuario registrado correctamente');
+      .then((res) => {
+
+        firestore()
+        .collection('Users')
+        .doc(res.user.uid)
+        .set({
+          name: nombre,
+        })
+        .then(() => {
+          console.log('Usuario registrado correctamente!');
+        });
+
+        console.log()
         setIsRegister(true);
         setTimeout(() => {
           navigation.replace('Log_In' as never);

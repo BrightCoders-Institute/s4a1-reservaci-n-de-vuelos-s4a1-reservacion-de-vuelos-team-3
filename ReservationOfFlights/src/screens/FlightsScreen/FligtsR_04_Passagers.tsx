@@ -5,11 +5,17 @@ import {Card} from '../../components/CardComponent/Card';
 import ButtonBack from '../../components/ButtonBack';
 import {ButtonPrimary} from '../../components/ButtonPrimary';
 
-export default function FlightsR_04_Passengers({navigation}: any) {
+export default function FlightsR_04_Passengers({route, navigation}: any) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const {from, to, date} = route.params;
 
   function navegar() {
-    navigation.navigate('FR5');
+    navigation.navigate('FR5', {
+      from: from,
+      to: to,
+      date: date,
+      passengers: selectedIndex,
+    });
   }
 
   function irAtras() {
@@ -20,10 +26,10 @@ export default function FlightsR_04_Passengers({navigation}: any) {
     <View style={styles.content}>
       <ButtonBack onPress={irAtras} />
       <Card
-        BEG={{show: true, text: 'Your Departure'}}
-        AMS={{show: true, text: 'Your Destination'}}
-        date="2024-01-31"
-        passengers=""
+        BEG={{show: true, text: to}}
+        AMS={{show: true, text: from}}
+        date={date}
+        passengers={0}
       />
 
       <View>
@@ -33,7 +39,7 @@ export default function FlightsR_04_Passengers({navigation}: any) {
       <View style={styles.scrollContainer}>
         <WheelPicker
           selectedIndex={selectedIndex}
-          options={['1', '2', '3', '4', '5', '6', '7', '8', '9']}
+          options={['---', '1', '2', '3', '4', '5', '6', '7', '8', '9']}
           onChange={index => setSelectedIndex(index)}
           itemStyle={styles.itemStyle}
           itemTextStyle={styles.itemTextStyle}
@@ -41,7 +47,11 @@ export default function FlightsR_04_Passengers({navigation}: any) {
         {/* button */}
       </View>
       <View style={styles.ButtonV}>
-        <ButtonPrimary text="Next" onPress={navegar} />
+        <ButtonPrimary
+          text="Next"
+          onPress={navegar}
+          disabled={selectedIndex === 0}
+        />
       </View>
     </View>
   );
